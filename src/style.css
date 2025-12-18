@@ -233,7 +233,7 @@ body {
 }
 @media (max-width: 600px) {
   .event-icon div { /* Targeting the Lottie container */
-    width: 20px !important;
+    width: 10px !important;
     height: 20px !important;
   }
   
@@ -707,6 +707,14 @@ body {
   /* Add a soft gold glow behind the icon */
   filter: drop-shadow(0 0 5px rgba(207, 181, 57, 0.4));
 }
+.event-iicon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  /* Add a soft gold glow behind the icon */
+  filter: drop-shadow(0 0 5px rgba(207, 181, 57, 0.4));
+}
 
 .event-icon svg {
   /* This ensures the icon lines are elegant and thin */
@@ -946,13 +954,7 @@ body {
 }
 
 /* --- EVENT CARDS --- */
-.event-dual {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 50px;
-  border-top: 1px solid rgba(207, 181, 59, 0.3);
-  padding-top: 40px;
-}
+
 
 .event-card {
   background: rgba(255, 255, 255, 0.05);
@@ -994,15 +996,100 @@ body {
 
 /* Mobile Adjustments */
 @media (max-width: 600px) {
-  .family-names, .event-dual {
+  .family-names {
     grid-template-columns: 1fr;
+    display: flex; /* Ensure display flex is active if using flex-direction */
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    
+    /* CHANGE: Remove 2260px and use auto */
+    height: auto !important; 
+    margin-bottom: 40px;
   }
-  .event-card { width: 90%; }
-  .date-section-container { flex-direction: column; text-align: center; }
-  .event-date { text-align: center; }
+
+  .event-dual {
+    display: flex; /* Added to ensure flex properties work */
+    flex-direction: column;
+    align-items: center;
+    gap: 40px; /* Added gap to prevent cards from touching */
+  }
+
+  .event-card { 
+    width: 100%; 
+    /* Prevent the card content from being squashed */
+    min-height: fit-content; 
+  }
+
+  .date-section-container { 
+    flex-direction: column; 
+    text-align: center; 
+    gap: 15px;
+  }
+
+  .event-date { 
+    text-align: center; 
+    font-size: 1.5rem; /* Slightly smaller for mobile readability */
+  }
+}
+
+/* --- Base Scroll Styles --- */
+.scroll-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure this is very large to accommodate wrapping text on mobile */
+.scroll.open .scroll-body {
+  max-height: 5000px; 
+}
+
+.scroll-bg {
+  /* Use auto height so it grows with your content */
+  height: auto; 
+  min-height: 100%;
+  /* IMPORTANT: Large bottom padding so the bottom rod sits below the dolls */
+  padding: 40px 24px 180px 24px; 
+  background: linear-gradient(#7b0f1a, #8c1420, #6a0c15);
+  color: #f7e6b2;
+  box-shadow: inset 0 0 0 2px #cfb53b;
+  position: relative;
+}
+
+/* --- Fixed Media Query --- */
+@media (max-width: 600px) {
+  .family-names {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    height: auto !important; /* Changed from fixed 2260px to auto */
+    margin-bottom: 40px;
+  }
+
+  .event-dual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px; /* Space between Reception and Muhurtam cards */
+  }
+
+  .event-card {
+    width: 100%;
+    min-height: fit-content;
+    padding: 20px;
+  }
+
+  /* Fix shrinking icons */
+  .event-icon div {
+    width: 100px !important;
+    height: 100px !important;
+    margin: 0 auto;
+  }
 }
 /* -----------------------------
    PRESENCE MESSAGE
