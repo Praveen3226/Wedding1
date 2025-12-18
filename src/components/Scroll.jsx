@@ -125,7 +125,7 @@ export default function Scroll({ opened, onUntie }) {
 <div className="qr-container">
   {/* The QR Box Link */}
   <a 
-    href="https://maps.google.com/your-coordinates" 
+    href="https://maps.app.goo.gl/jbwjSibXDbEsRckw9" 
     target="_blank" 
     rel="noreferrer"
     className="qr-link"
@@ -142,7 +142,7 @@ export default function Scroll({ opened, onUntie }) {
   <div className="qr-instruction">
     <p>Scan or Tap to navigate to the venue</p>
     <a 
-      href="https://maps.google.com/your-coordinates" 
+      href="https://maps.app.goo.gl/jbwjSibXDbEsRckw9" 
       target="_blank" 
       rel="noreferrer" 
       className="map-link"
