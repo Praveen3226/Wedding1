@@ -2,7 +2,7 @@ import React from "react";
 import ClothSeal from "./ClothSeal";
 import garland from "../assets/garland.png";
 import qrcode from "../assets/my_location_qr.png";
-import { Utensils, Gem  } from 'lucide-react'; // Import the icons you need
+import { Utensils, Gem,MapPin  } from 'lucide-react'; // Import the icons you need
 import marriageAnimation from "../assets/Marriage animation.json"; 
 import MarriageCouple from "../assets/Marriage Couple hugging.json";
 import Lottie from "lottie-react";
@@ -87,7 +87,7 @@ export default function Scroll({ opened, onUntie }) {
 
 {/* LEFT — Reception */}
 <div className="event-card left">
-  <div className="event-icon">
+  <div className="event-iicon">
   <Lottie
     animationData={marriageAnimation}
     loop
@@ -107,7 +107,7 @@ export default function Scroll({ opened, onUntie }) {
 
   {/* RIGHT — Muhurtam */}
   <div className="event-card right">
-    <div className="event-icon">
+    <div className="event-iicon">
         <Lottie
     animationData={MarriageCouple}
     loop
@@ -121,29 +121,37 @@ export default function Scroll({ opened, onUntie }) {
       10:00 a.m. to 11:00 a.m.
     </p>
   </div>
-        <div className="qr-container">
-        <div className="qr-box">
-            <div className="qr-frame top-left"></div>
-            <div className="qr-frame top-right"></div>
-            <div className="qr-frame bottom-left"></div>
-            <div className="qr-frame bottom-right"></div>
-            
-            {/* Replace with your actual QR code image path */}
-            <img src={qrcode} alt="Venue Location QR" className="qr-image" />
-        </div>
-        
-        <p className="qr-instruction">
-            Scan to navigate to the venue <br />
-            <a 
-            href="https://maps.app.goo.gl/Ms76ivd6VicUKMSk8?g_st=ic" 
-            target="_blank" 
-            rel="noreferrer" 
-            className="map-link"
-            >
-            📍 View on Google Maps
-            </a> 
-        </p>
-        </div>
+
+<div className="qr-container">
+  {/* The QR Box Link */}
+  <a 
+    href="https://maps.google.com/your-coordinates" 
+    target="_blank" 
+    rel="noreferrer"
+    className="qr-link"
+  >
+    <div className="qr-box">
+      <div className="qr-frame top-left"></div>
+      <div className="qr-frame top-right"></div>
+      <div className="qr-frame bottom-left"></div>
+      <div className="qr-frame bottom-right"></div>
+      <img src={qrcode} alt="Venue Location QR" className="qr-image" />
+    </div>
+  </a>
+  
+  <div className="qr-instruction">
+    <p>Scan or Tap to navigate to the venue</p>
+    <a 
+      href="https://maps.google.com/your-coordinates" 
+      target="_blank" 
+      rel="noreferrer" 
+      className="map-link"
+    >
+      
+      <h3><MapPin size={20} strokeWidth={1.5} className="map-icon" /> VIEW ON GOOGLE MAPS</h3>
+    </a> 
+  </div>
+</div>
 
         </div>
 
