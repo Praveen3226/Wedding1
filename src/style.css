@@ -211,21 +211,44 @@ body {
 }
 
 .scroll-body {
+  /* Ensure the body can expand naturally */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+.scroll-body {
   max-height: 0;
   overflow: hidden;
   transition: max-height 1.8s ease;
 }
-
-.scroll.open .scroll-body {
-  max-height: 1000px;
+.scroll-body {
+  overflow: hidden;
+  height: auto;
 }
-
+.scroll.open .scroll-body {
+  /* Increased from 2000px/3000px to 5000px to be safe */
+  max-height: 4000px; 
+}
+@media (max-width: 600px) {
+  .event-icon div { /* Targeting the Lottie container */
+    width: 20px !important;
+    height: 20px !important;
+  }
+  
+  .scroll.open .scroll-body {
+    /* Mobile needs even more height as text wraps into more lines */
+    max-height: 6000px; 
+  }
+}
 .scroll-bg {
   padding: 24px 20px;
   background:
     linear-gradient(#7b0f1a, #8c1420, #6a0c15);
   color: #f7e6b2;
   box-shadow: inset 0 0 0 2px gold;
+  height: auto;
 }
 
 
@@ -475,7 +498,6 @@ body {
 
   .hint-popup {
     top: -50px;
-    /* Smaller font size ensures it fits phone screens in one line */
     font-size: 0.8rem;
     padding: 8px 18px;
   }
@@ -704,7 +726,7 @@ body {
 .invite-line {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
-  font-weight: 300;
+  font-weight: 700;
   font-style: italic;
   letter-spacing: 2px;
   line-height: 1.8;
@@ -799,9 +821,11 @@ body {
   transition: max-height 2.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Update your opening animation */
 .scroll.open .scroll-body {
-  /* Increased to 3000px so content is never cut off */
+  /* Increase this significantly (e.g., from 1000px to 3000px) */
   max-height: 3000px; 
+  transition: max-height 2.5s ease-in-out;
 }
 
 .scroll-bg {
